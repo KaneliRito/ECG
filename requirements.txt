@@ -1,1 +1,10 @@
-pymupdf
+streamlit
+PyMuPDF
+Pillow
+numpy
+scipy
+pandas
+tensorflow
+opencv-python
+fpdf
+tqdm
