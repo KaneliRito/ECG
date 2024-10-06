@@ -1,1 +1,1 @@
-import fitz
+pymupdf
