@@ -3,8 +3,7 @@
 import numpy as np
 from sklearn.model_selection import StratifiedKFold
 from sklearn.utils import class_weight
-from sklearn.metrics import (f1_score, precision_score, recall_score,
-                             roc_auc_score, average_precision_score)
+from sklearn.metrics import (f1_score, precision_score, recall_score, roc_auc_score, average_precision_score)
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Input, LSTM, BatchNormalization
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint

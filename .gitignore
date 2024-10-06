@@ -8,3 +8,4 @@
 !model_training.py
 !utils.py
 !final_model.keras
+!requirements.txt
