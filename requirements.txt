@@ -5,12 +5,6 @@ numpy
 scipy
 pandas
 tensorflow
-opencv-python
+opencv-python-headless
 fpdf
 tqdm
-streamlit
-tensorflow
-scipy
-opencv-python
-fpdf
-

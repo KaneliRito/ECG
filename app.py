@@ -34,7 +34,7 @@ def load_trained_model(model_path):
     return model
 
 # Geef het pad van het model
-model_path = 'ECG\\final_model.keras'
+model_path = 'final_model.keras'
 
 # Laad het model
 model = load_trained_model(model_path)
