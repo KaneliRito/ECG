@@ -8,3 +8,9 @@ tensorflow
 opencv-python
 fpdf
 tqdm
+streamlit
+tensorflow
+scipy
+opencv-python
+fpdf
+
