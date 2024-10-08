@@ -27,7 +27,7 @@ def generate_png_images(csv_path, output_dir, image_size=(500, 500)):
         # Draw black dots
         for x, y in zip(x_coords, y_coords):
             x_pixel = int(float(x) * (image_size[0] - 1))
-            y_pixel = int((1 - float(y)) * (image_size[1] - 1))  # Invert Y-axis
+            y_pixel = int(float(y) * (image_size[1] - 1))  # Invert Y-axis
             radius = 2  # Dot radius
             draw.ellipse((x_pixel - radius, y_pixel - radius, x_pixel + radius, y_pixel + radius), fill='black')
 

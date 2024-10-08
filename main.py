@@ -21,6 +21,10 @@ def main():
     X, y = prepare_data(csv_output)
 
     if X is not None and y is not None:
+        image_csv_dir = 'image_csv'
+        generate_png_images(csv_output, image_csv_dir, image_size=(500, 500))
+        logger.info(f"PNG images saved in the folder '{image_csv_dir}'.")
+
         # Perform Stratified K-Fold Cross-Validation
         perform_cross_validation(X, y, n_splits=5)
 
@@ -28,9 +32,7 @@ def main():
         train_final_model(X, y)
 
         # Generate PNG images from CSV data
-        image_csv_dir = 'image_csv'
-        generate_png_images(csv_output, image_csv_dir, image_size=(500, 500))
-        logger.info(f"PNG images saved in the folder '{image_csv_dir}'.")
+
     else:
         logger.error(f"CSV file {csv_output} is empty or data preparation failed. No data to process.")
 

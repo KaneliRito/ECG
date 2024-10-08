@@ -29,11 +29,12 @@ def extract_ecg_image_from_pdf(pdf_path, output_path, clip_rect, zoom=2.0):
 def preprocess_image(img):
     """Converts image to grayscale and binarizes it."""
     try:
-        gray = img.convert("L")  # Convert to grayscale
+        gray = img.convert("L")  
         gray_np = np.array(gray)
+        logger.info("Image converted to grayscale")
         _, binary = cv2.threshold(gray_np, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
         binary_img = Image.fromarray(binary)
-        logger.info("Image converted to grayscale and binarized.")
+        logger.info("Image binarized.")
         return binary_img
     except Exception as e:
         logger.error(f"Error preprocessing image: {e}")
