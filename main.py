@@ -15,6 +15,7 @@ def main():
 
     # Process PDFs and extract ECG data
     csv_output = 'ecg_data.csv'
+    
     process_pdfs(output_csv=csv_output)
 
     # Prepare data for model training

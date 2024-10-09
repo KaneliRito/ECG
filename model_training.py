@@ -14,6 +14,7 @@ from tqdm import tqdm
 import logging
 import matplotlib.pyplot as plt
 import os
+from logger_setup import setup_logger
 
 logger = logging.getLogger(__name__)
 

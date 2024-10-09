@@ -258,8 +258,7 @@ st.title("ECG PDF Verwerker en Classificatie")
 # Disclaimer en acceptatie
 st.subheader("Disclaimer")
 st.write("""
-Deze applicatie verwerkt medische gegevens in de vorm van ECG PDF-bestanden. Door op **"Ik ga akkoord"** te klikken, stem je in met het uploaden van je medische gegevens. Alle gegevens worden na verwerking verwijderd. Er wordt geen aansprakelijkheid geaccepteerd voor eventuele gevolgen van het gebruik van deze applicatie, aangezien deze bedoeld is voor demonstratiedoeleinden en geen vervanging is voor professioneel medisch advies.
-""")
+Deze applicatie verwerkt medische gegevens in de vorm van ECG PDF-bestanden. Door op **"Ik ga akkoord"** te klikken, stem je in met het uploaden van je medische gegevens. Alle gegevens worden na verwerking verwijderd. Er wordt geen aansprakelijkheid geaccepteerd voor eventuele gevolgen van het gebruik van deze applicatie, aangezien deze bedoeld is voor demonstratiedoeleinden en geen vervanging is voor professioneel medisch advies. Houd er rekening mee dat de AI-algoritmen die in deze applicatie worden gebruikt mogelijk bias bevatten, waardoor de resultaten niet volledig nauwkeurig kunnen zijn.""")
 
 accept = st.checkbox("Ik ga akkoord")
 
