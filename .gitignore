@@ -8,4 +8,7 @@
 !model_training.py
 !utils.py
 !final_model.keras
+!/roc_curves
+!model.log
+!
 !requirements.txt
