@@ -48,10 +48,10 @@ def generate_png_images(csv_path, output_dir, image_size=(500, 500)):
             for i, (x, y) in enumerate(zip(x_coords, y_coords)):
                 try:
                     x_pixel = int(float(x) * (image_size[0] - 1))
-                    y_pixel = int(float(y) * (image_size[1] - 1))  # Y-as omkeren
+                    y_pixel = int(float(y) * (image_size[1] - 1))
                     radius = 2  # Straal van de stip
                     draw.ellipse((x_pixel - radius, y_pixel - radius, x_pixel + radius, y_pixel + radius), fill='black')
-                    logger.warning(f"Stip {i} getekend op ({x_pixel}, {y_pixel}).")
+                    # logger.info(f"Stip {i} getekend op ({x_pixel}, {y_pixel}).")
                 except Exception as coord_e:
                     logger.warning(f"Fout bij het verwerken van coördinaten ({x}, {y}) voor bestand {filename}: {coord_e}")
 
