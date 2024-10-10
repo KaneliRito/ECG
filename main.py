@@ -22,7 +22,7 @@ def main():
     X, y = prepare_data(csv_output)
 
     if X is not None and y is not None:
-        image_csv_dir = 'image_csv'
+        image_csv_dir = 'ECG\\image_csv'
         generate_png_images(csv_output, image_csv_dir, image_size=(500, 500))
         logger.info(f"PNG images saved in the folder '{image_csv_dir}'.")
 

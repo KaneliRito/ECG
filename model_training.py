@@ -19,7 +19,7 @@ from logger_setup import setup_logger
 logger = logging.getLogger(__name__)
 
 # Directory paths
-ROC_DIR = 'roc_curves'
+ROC_DIR = 'ECG\\roc_curves'
 
 def create_dirs(*dirs):
     """Creates directories if they do not exist."""
