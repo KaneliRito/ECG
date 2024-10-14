@@ -76,7 +76,7 @@ def load_trained_model(model_path):
     return model
 
 # Provide the path to the model
-model_path = 'ecg\\final_model.keras'
+model_path = 'ECG\\final_model.keras'
 
 # Load the model
 model = load_trained_model(model_path)
