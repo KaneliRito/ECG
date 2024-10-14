@@ -10,3 +10,4 @@ pandas
 scipy
 streamlit
 fpdf
+cv2
