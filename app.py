@@ -122,7 +122,7 @@ def generate_pdf(layers_info, original_image):
     
     
     # Add ROC Curve Image with Explanation
-    roc_image_path = 'roc_curves\\roc_foldfinal.png'
+    roc_image_path = 'ECG\\roc_curves\\roc_foldfinal.png'
     if os.path.exists(roc_image_path):
         pdf.set_font("Arial", '', 12)
         pdf.cell(0, 10, "Receiver Operating Characteristic (ROC) Curve:", ln=True)
