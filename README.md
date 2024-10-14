@@ -4,6 +4,8 @@ Welkom bij het **ECG-Analyse Project**, een Python-gebaseerde applicatie die geb
 
 Dit project richt zich op het ontwikkelen van een AI-model dat ECG-gegevens kan analyseren en classificeren als normaal of abnormaal. Het model maakt gebruik van LSTM-netwerken vanwege hun efficiëntie in het verwerken van sequentiële data. De toepassing wordt ondersteund door een gebruiksvriendelijke webapplicatie gebouwd met Streamlit, waarmee gebruikers hun ECG-PDF's kunnen uploaden en direct resultaten kunnen ontvangen.
 
+**link naar webapp**: ecgiffda.streamlit.app/
+
 ## Technologieën
 
 - **Programmeertaal:** Python
