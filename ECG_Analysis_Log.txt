@@ -1,0 +1,357 @@
+2024-10-14 16:15:34,480 - INFO - Log file made available for download.
+2024-10-14 16:15:34,480 - INFO - Log file made available for download.
+2024-10-14 16:15:34,480 - INFO - Temporary PDF file successfully removed.
+2024-10-14 16:15:34,480 - INFO - Temporary PDF file successfully removed.
+2024-10-14 16:15:34,481 - INFO - Temporary ECG image successfully removed.
+2024-10-14 16:15:34,481 - INFO - Temporary ECG image successfully removed.
+2024-10-14 16:15:55,747 - INFO - Start of the ECG processing and model classification via Streamlit.
+2024-10-14 16:15:55,747 - INFO - Start of the ECG processing and model classification via Streamlit.
+2024-10-14 16:15:55,747 - INFO - Seed set for reproducibility.
+2024-10-14 16:15:55,747 - INFO - Seed set for reproducibility.
+2024-10-14 16:15:55,749 - INFO - User has agreed to the disclaimer.
+2024-10-14 16:15:55,749 - INFO - User has agreed to the disclaimer.
+2024-10-14 16:15:55,750 - INFO - User uploaded a file: Health - Trent van Waas - ECG 2024-09-27 at 00.15.pdf
+2024-10-14 16:15:55,750 - INFO - User uploaded a file: Health - Trent van Waas - ECG 2024-09-27 at 00.15.pdf
+2024-10-14 16:15:55,750 - DEBUG - Verified/created directory: ECG\temp
+2024-10-14 16:15:55,750 - DEBUG - Verified/created directory: ECG\temp
+2024-10-14 16:15:55,751 - DEBUG - Verified/created directory: ECG\roc_curves
+2024-10-14 16:15:55,751 - DEBUG - Verified/created directory: ECG\roc_curves
+2024-10-14 16:15:55,751 - DEBUG - Uploaded file saved as temporary file: C:\Users\trent\AppData\Local\Temp\tmpidq3tfsi.pdf
+2024-10-14 16:15:55,751 - DEBUG - Uploaded file saved as temporary file: C:\Users\trent\AppData\Local\Temp\tmpidq3tfsi.pdf
+2024-10-14 16:15:55,752 - DEBUG - Using clip_rect for ECG extraction: Rect(20.0, 200.0, 850.0, 525.0)
+2024-10-14 16:15:55,752 - DEBUG - Using clip_rect for ECG extraction: Rect(20.0, 200.0, 850.0, 525.0)
+2024-10-14 16:15:55,758 - INFO - Determined Label of the ECG: abnormal
+2024-10-14 16:15:55,758 - INFO - Determined Label of the ECG: abnormal
+2024-10-14 16:15:55,758 - INFO - Starting extraction of the ECG image from the PDF.
+2024-10-14 16:15:55,758 - INFO - Starting extraction of the ECG image from the PDF.
+2024-10-14 16:15:55,828 - INFO - ECG image saved as ECG\temp\temp_ecg.png.
+2024-10-14 16:15:55,829 - INFO - ECG image successfully extracted from the PDF.
+2024-10-14 16:15:55,829 - INFO - ECG image successfully extracted from the PDF.
+2024-10-14 16:15:55,829 - DEBUG - STREAM b'IHDR' 16 13
+2024-10-14 16:15:55,829 - DEBUG - STREAM b'pHYs' 41 9
+2024-10-14 16:15:55,829 - DEBUG - STREAM b'IDAT' 62 65536
+2024-10-14 16:15:55,830 - INFO - ECG image successfully loaded.
+2024-10-14 16:15:55,830 - INFO - ECG image successfully loaded.
+2024-10-14 16:15:55,856 - DEBUG - Extracted ECG image displayed to the user.
+2024-10-14 16:15:55,856 - DEBUG - Extracted ECG image displayed to the user.
+2024-10-14 16:15:55,856 - INFO - Starting preprocessing of the ECG image.
+2024-10-14 16:15:55,856 - INFO - Starting preprocessing of the ECG image.
+2024-10-14 16:15:55,857 - INFO - Image converted to grayscale.
+2024-10-14 16:15:55,858 - INFO - Image binarized.
+2024-10-14 16:15:55,858 - INFO - Preprocessing of the ECG image completed.
+2024-10-14 16:15:55,858 - INFO - Preprocessing of the ECG image completed.
+2024-10-14 16:15:55,867 - DEBUG - Preprocessed ECG image displayed to the user.
+2024-10-14 16:15:55,867 - DEBUG - Preprocessed ECG image displayed to the user.
+2024-10-14 16:15:55,867 - INFO - Splitting the image into 3 layers.
+2024-10-14 16:15:55,867 - DEBUG - Layer 1 cropped from pixels 0 to 216.
+2024-10-14 16:15:55,867 - DEBUG - Layer 2 cropped from pixels 216 to 432.
+2024-10-14 16:15:55,867 - DEBUG - Layer 3 cropped from pixels 432 to 650.
+2024-10-14 16:15:55,867 - INFO - Image successfully split into 3 layers.
+2024-10-14 16:15:55,867 - INFO - Image successfully split into 3 layers.
+2024-10-14 16:15:55,867 - INFO - Image successfully split into 3 layers.
+2024-10-14 16:15:55,868 - INFO - Starting processing of Layer 1.
+2024-10-14 16:15:55,868 - INFO - Starting processing of Layer 1.
+2024-10-14 16:15:55,868 - DEBUG - Extracting ECG signal for Layer 1.
+2024-10-14 16:15:55,868 - DEBUG - Extracting ECG signal for Layer 1.
+2024-10-14 16:15:55,868 - DEBUG - ECG signal for Layer 1 successfully extracted.
+2024-10-14 16:15:55,868 - DEBUG - ECG signal for Layer 1 successfully extracted.
+2024-10-14 16:15:55,868 - INFO - Number of detected R-peaks for Layer 1: 7
+2024-10-14 16:15:55,868 - INFO - Number of detected R-peaks for Layer 1: 7
+2024-10-14 16:15:55,869 - INFO - Number of heartbeat segments for Layer 1: 7
+2024-10-14 16:15:55,869 - INFO - Number of heartbeat segments for Layer 1: 7
+2024-10-14 16:15:55,870 - DEBUG - Coordinates extracted for heartbeat 1 of Layer 1.
+2024-10-14 16:15:55,870 - DEBUG - Coordinates extracted for heartbeat 1 of Layer 1.
+2024-10-14 16:15:55,870 - INFO - Starting interpolation with 44997 points.
+2024-10-14 16:15:55,871 - INFO - Interpolation successful.
+2024-10-14 16:15:55,871 - DEBUG - Coordinates interpolated for heartbeat 1 of Layer 1.
+2024-10-14 16:15:55,871 - DEBUG - Coordinates interpolated for heartbeat 1 of Layer 1.
+2024-10-14 16:15:55,872 - DEBUG - Coordinates extracted for heartbeat 2 of Layer 1.
+2024-10-14 16:15:55,872 - DEBUG - Coordinates extracted for heartbeat 2 of Layer 1.
+2024-10-14 16:15:55,872 - INFO - Starting interpolation with 45419 points.
+2024-10-14 16:15:55,872 - INFO - Interpolation successful.
+2024-10-14 16:15:55,873 - DEBUG - Coordinates interpolated for heartbeat 2 of Layer 1.
+2024-10-14 16:15:55,873 - DEBUG - Coordinates interpolated for heartbeat 2 of Layer 1.
+2024-10-14 16:15:55,873 - DEBUG - Coordinates extracted for heartbeat 3 of Layer 1.
+2024-10-14 16:15:55,873 - DEBUG - Coordinates extracted for heartbeat 3 of Layer 1.
+2024-10-14 16:15:55,873 - INFO - Starting interpolation with 45258 points.
+2024-10-14 16:15:55,874 - INFO - Interpolation successful.
+2024-10-14 16:15:55,874 - DEBUG - Coordinates interpolated for heartbeat 3 of Layer 1.
+2024-10-14 16:15:55,874 - DEBUG - Coordinates interpolated for heartbeat 3 of Layer 1.
+2024-10-14 16:15:55,874 - DEBUG - Coordinates extracted for heartbeat 4 of Layer 1.
+2024-10-14 16:15:55,874 - DEBUG - Coordinates extracted for heartbeat 4 of Layer 1.
+2024-10-14 16:15:55,874 - INFO - Starting interpolation with 45170 points.
+2024-10-14 16:15:55,875 - INFO - Interpolation successful.
+2024-10-14 16:15:55,875 - DEBUG - Coordinates interpolated for heartbeat 4 of Layer 1.
+2024-10-14 16:15:55,875 - DEBUG - Coordinates interpolated for heartbeat 4 of Layer 1.
+2024-10-14 16:15:55,875 - DEBUG - Coordinates extracted for heartbeat 5 of Layer 1.
+2024-10-14 16:15:55,875 - DEBUG - Coordinates extracted for heartbeat 5 of Layer 1.
+2024-10-14 16:15:55,875 - INFO - Starting interpolation with 45280 points.
+2024-10-14 16:15:55,876 - INFO - Interpolation successful.
+2024-10-14 16:15:55,876 - DEBUG - Coordinates interpolated for heartbeat 5 of Layer 1.
+2024-10-14 16:15:55,876 - DEBUG - Coordinates interpolated for heartbeat 5 of Layer 1.
+2024-10-14 16:15:55,876 - DEBUG - Coordinates extracted for heartbeat 6 of Layer 1.
+2024-10-14 16:15:55,876 - DEBUG - Coordinates extracted for heartbeat 6 of Layer 1.
+2024-10-14 16:15:55,876 - INFO - Starting interpolation with 45177 points.
+2024-10-14 16:15:55,877 - INFO - Interpolation successful.
+2024-10-14 16:15:55,877 - DEBUG - Coordinates interpolated for heartbeat 6 of Layer 1.
+2024-10-14 16:15:55,877 - DEBUG - Coordinates interpolated for heartbeat 6 of Layer 1.
+2024-10-14 16:15:55,877 - DEBUG - Coordinates extracted for heartbeat 7 of Layer 1.
+2024-10-14 16:15:55,877 - DEBUG - Coordinates extracted for heartbeat 7 of Layer 1.
+2024-10-14 16:15:55,877 - INFO - Starting interpolation with 45221 points.
+2024-10-14 16:15:55,878 - INFO - Interpolation successful.
+2024-10-14 16:15:55,878 - DEBUG - Coordinates interpolated for heartbeat 7 of Layer 1.
+2024-10-14 16:15:55,878 - DEBUG - Coordinates interpolated for heartbeat 7 of Layer 1.
+2024-10-14 16:15:55,878 - DEBUG - Average coordinates calculated for Layer 1.
+2024-10-14 16:15:55,878 - DEBUG - Average coordinates calculated for Layer 1.
+2024-10-14 16:15:55,878 - DEBUG - Data reshaped for LSTM prediction for Layer 1.
+2024-10-14 16:15:55,878 - DEBUG - Data reshaped for LSTM prediction for Layer 1.
+2024-10-14 16:15:56,008 - INFO - Predicted Class for Layer 1: Abnormal with probability 0.73
+2024-10-14 16:15:56,008 - INFO - Predicted Class for Layer 1: Abnormal with probability 0.73
+2024-10-14 16:15:56,008 - DEBUG - Information added to layers_info for Layer 1.
+2024-10-14 16:15:56,008 - DEBUG - Information added to layers_info for Layer 1.
+2024-10-14 16:15:56,009 - INFO - Starting processing of Layer 2.
+2024-10-14 16:15:56,009 - INFO - Starting processing of Layer 2.
+2024-10-14 16:15:56,009 - DEBUG - Extracting ECG signal for Layer 2.
+2024-10-14 16:15:56,009 - DEBUG - Extracting ECG signal for Layer 2.
+2024-10-14 16:15:56,009 - DEBUG - ECG signal for Layer 2 successfully extracted.
+2024-10-14 16:15:56,009 - DEBUG - ECG signal for Layer 2 successfully extracted.
+2024-10-14 16:15:56,009 - INFO - Number of detected R-peaks for Layer 2: 8
+2024-10-14 16:15:56,009 - INFO - Number of detected R-peaks for Layer 2: 8
+2024-10-14 16:15:56,010 - INFO - Number of heartbeat segments for Layer 2: 8
+2024-10-14 16:15:56,010 - INFO - Number of heartbeat segments for Layer 2: 8
+2024-10-14 16:15:56,011 - DEBUG - Coordinates extracted for heartbeat 1 of Layer 2.
+2024-10-14 16:15:56,011 - DEBUG - Coordinates extracted for heartbeat 1 of Layer 2.
+2024-10-14 16:15:56,011 - INFO - Starting interpolation with 38243 points.
+2024-10-14 16:15:56,012 - INFO - Interpolation successful.
+2024-10-14 16:15:56,012 - DEBUG - Coordinates interpolated for heartbeat 1 of Layer 2.
+2024-10-14 16:15:56,012 - DEBUG - Coordinates interpolated for heartbeat 1 of Layer 2.
+2024-10-14 16:15:56,012 - DEBUG - Coordinates extracted for heartbeat 2 of Layer 2.
+2024-10-14 16:15:56,012 - DEBUG - Coordinates extracted for heartbeat 2 of Layer 2.
+2024-10-14 16:15:56,012 - INFO - Starting interpolation with 40904 points.
+2024-10-14 16:15:56,013 - INFO - Interpolation successful.
+2024-10-14 16:15:56,013 - DEBUG - Coordinates interpolated for heartbeat 2 of Layer 2.
+2024-10-14 16:15:56,013 - DEBUG - Coordinates interpolated for heartbeat 2 of Layer 2.
+2024-10-14 16:15:56,013 - DEBUG - Coordinates extracted for heartbeat 3 of Layer 2.
+2024-10-14 16:15:56,013 - DEBUG - Coordinates extracted for heartbeat 3 of Layer 2.
+2024-10-14 16:15:56,013 - INFO - Starting interpolation with 40929 points.
+2024-10-14 16:15:56,014 - INFO - Interpolation successful.
+2024-10-14 16:15:56,014 - DEBUG - Coordinates interpolated for heartbeat 3 of Layer 2.
+2024-10-14 16:15:56,014 - DEBUG - Coordinates interpolated for heartbeat 3 of Layer 2.
+2024-10-14 16:15:56,014 - DEBUG - Coordinates extracted for heartbeat 4 of Layer 2.
+2024-10-14 16:15:56,014 - DEBUG - Coordinates extracted for heartbeat 4 of Layer 2.
+2024-10-14 16:15:56,014 - INFO - Starting interpolation with 41208 points.
+2024-10-14 16:15:56,015 - INFO - Interpolation successful.
+2024-10-14 16:15:56,015 - DEBUG - Coordinates interpolated for heartbeat 4 of Layer 2.
+2024-10-14 16:15:56,015 - DEBUG - Coordinates interpolated for heartbeat 4 of Layer 2.
+2024-10-14 16:15:56,015 - DEBUG - Coordinates extracted for heartbeat 5 of Layer 2.
+2024-10-14 16:15:56,015 - DEBUG - Coordinates extracted for heartbeat 5 of Layer 2.
+2024-10-14 16:15:56,015 - INFO - Starting interpolation with 40948 points.
+2024-10-14 16:15:56,016 - INFO - Interpolation successful.
+2024-10-14 16:15:56,016 - DEBUG - Coordinates interpolated for heartbeat 5 of Layer 2.
+2024-10-14 16:15:56,016 - DEBUG - Coordinates interpolated for heartbeat 5 of Layer 2.
+2024-10-14 16:15:56,016 - DEBUG - Coordinates extracted for heartbeat 6 of Layer 2.
+2024-10-14 16:15:56,016 - DEBUG - Coordinates extracted for heartbeat 6 of Layer 2.
+2024-10-14 16:15:56,016 - INFO - Starting interpolation with 40874 points.
+2024-10-14 16:15:56,017 - INFO - Interpolation successful.
+2024-10-14 16:15:56,017 - DEBUG - Coordinates interpolated for heartbeat 6 of Layer 2.
+2024-10-14 16:15:56,017 - DEBUG - Coordinates interpolated for heartbeat 6 of Layer 2.
+2024-10-14 16:15:56,017 - DEBUG - Coordinates extracted for heartbeat 7 of Layer 2.
+2024-10-14 16:15:56,017 - DEBUG - Coordinates extracted for heartbeat 7 of Layer 2.
+2024-10-14 16:15:56,017 - INFO - Starting interpolation with 40914 points.
+2024-10-14 16:15:56,017 - INFO - Interpolation successful.
+2024-10-14 16:15:56,018 - DEBUG - Coordinates interpolated for heartbeat 7 of Layer 2.
+2024-10-14 16:15:56,018 - DEBUG - Coordinates interpolated for heartbeat 7 of Layer 2.
+2024-10-14 16:15:56,018 - DEBUG - Coordinates extracted for heartbeat 8 of Layer 2.
+2024-10-14 16:15:56,018 - DEBUG - Coordinates extracted for heartbeat 8 of Layer 2.
+2024-10-14 16:15:56,018 - INFO - Starting interpolation with 41390 points.
+2024-10-14 16:15:56,018 - INFO - Interpolation successful.
+2024-10-14 16:15:56,018 - DEBUG - Coordinates interpolated for heartbeat 8 of Layer 2.
+2024-10-14 16:15:56,018 - DEBUG - Coordinates interpolated for heartbeat 8 of Layer 2.
+2024-10-14 16:15:56,018 - DEBUG - Average coordinates calculated for Layer 2.
+2024-10-14 16:15:56,018 - DEBUG - Average coordinates calculated for Layer 2.
+2024-10-14 16:15:56,019 - DEBUG - Data reshaped for LSTM prediction for Layer 2.
+2024-10-14 16:15:56,019 - DEBUG - Data reshaped for LSTM prediction for Layer 2.
+2024-10-14 16:15:56,060 - INFO - Predicted Class for Layer 2: Abnormal with probability 0.73
+2024-10-14 16:15:56,060 - INFO - Predicted Class for Layer 2: Abnormal with probability 0.73
+2024-10-14 16:15:56,061 - DEBUG - Information added to layers_info for Layer 2.
+2024-10-14 16:15:56,061 - DEBUG - Information added to layers_info for Layer 2.
+2024-10-14 16:15:56,061 - INFO - Starting processing of Layer 3.
+2024-10-14 16:15:56,061 - INFO - Starting processing of Layer 3.
+2024-10-14 16:15:56,061 - DEBUG - Extracting ECG signal for Layer 3.
+2024-10-14 16:15:56,061 - DEBUG - Extracting ECG signal for Layer 3.
+2024-10-14 16:15:56,061 - DEBUG - ECG signal for Layer 3 successfully extracted.
+2024-10-14 16:15:56,061 - DEBUG - ECG signal for Layer 3 successfully extracted.
+2024-10-14 16:15:56,061 - INFO - Number of detected R-peaks for Layer 3: 8
+2024-10-14 16:15:56,061 - INFO - Number of detected R-peaks for Layer 3: 8
+2024-10-14 16:15:56,062 - INFO - Number of heartbeat segments for Layer 3: 8
+2024-10-14 16:15:56,062 - INFO - Number of heartbeat segments for Layer 3: 8
+2024-10-14 16:15:56,063 - DEBUG - Coordinates extracted for heartbeat 1 of Layer 3.
+2024-10-14 16:15:56,063 - DEBUG - Coordinates extracted for heartbeat 1 of Layer 3.
+2024-10-14 16:15:56,063 - INFO - Starting interpolation with 32611 points.
+2024-10-14 16:15:56,063 - INFO - Interpolation successful.
+2024-10-14 16:15:56,063 - DEBUG - Coordinates interpolated for heartbeat 1 of Layer 3.
+2024-10-14 16:15:56,063 - DEBUG - Coordinates interpolated for heartbeat 1 of Layer 3.
+2024-10-14 16:15:56,064 - DEBUG - Coordinates extracted for heartbeat 2 of Layer 3.
+2024-10-14 16:15:56,064 - DEBUG - Coordinates extracted for heartbeat 2 of Layer 3.
+2024-10-14 16:15:56,064 - INFO - Starting interpolation with 42175 points.
+2024-10-14 16:15:56,065 - INFO - Interpolation successful.
+2024-10-14 16:15:56,065 - DEBUG - Coordinates interpolated for heartbeat 2 of Layer 3.
+2024-10-14 16:15:56,065 - DEBUG - Coordinates interpolated for heartbeat 2 of Layer 3.
+2024-10-14 16:15:56,066 - DEBUG - Coordinates extracted for heartbeat 3 of Layer 3.
+2024-10-14 16:15:56,066 - DEBUG - Coordinates extracted for heartbeat 3 of Layer 3.
+2024-10-14 16:15:56,066 - INFO - Starting interpolation with 42152 points.
+2024-10-14 16:15:56,067 - INFO - Interpolation successful.
+2024-10-14 16:15:56,067 - DEBUG - Coordinates interpolated for heartbeat 3 of Layer 3.
+2024-10-14 16:15:56,067 - DEBUG - Coordinates interpolated for heartbeat 3 of Layer 3.
+2024-10-14 16:15:56,067 - DEBUG - Coordinates extracted for heartbeat 4 of Layer 3.
+2024-10-14 16:15:56,067 - DEBUG - Coordinates extracted for heartbeat 4 of Layer 3.
+2024-10-14 16:15:56,067 - INFO - Starting interpolation with 42191 points.
+2024-10-14 16:15:56,068 - INFO - Interpolation successful.
+2024-10-14 16:15:56,068 - DEBUG - Coordinates interpolated for heartbeat 4 of Layer 3.
+2024-10-14 16:15:56,068 - DEBUG - Coordinates interpolated for heartbeat 4 of Layer 3.
+2024-10-14 16:15:56,068 - DEBUG - Coordinates extracted for heartbeat 5 of Layer 3.
+2024-10-14 16:15:56,068 - DEBUG - Coordinates extracted for heartbeat 5 of Layer 3.
+2024-10-14 16:15:56,068 - INFO - Starting interpolation with 42165 points.
+2024-10-14 16:15:56,069 - INFO - Interpolation successful.
+2024-10-14 16:15:56,069 - DEBUG - Coordinates interpolated for heartbeat 5 of Layer 3.
+2024-10-14 16:15:56,069 - DEBUG - Coordinates interpolated for heartbeat 5 of Layer 3.
+2024-10-14 16:15:56,069 - DEBUG - Coordinates extracted for heartbeat 6 of Layer 3.
+2024-10-14 16:15:56,069 - DEBUG - Coordinates extracted for heartbeat 6 of Layer 3.
+2024-10-14 16:15:56,069 - INFO - Starting interpolation with 42231 points.
+2024-10-14 16:15:56,070 - INFO - Interpolation successful.
+2024-10-14 16:15:56,070 - DEBUG - Coordinates interpolated for heartbeat 6 of Layer 3.
+2024-10-14 16:15:56,070 - DEBUG - Coordinates interpolated for heartbeat 6 of Layer 3.
+2024-10-14 16:15:56,070 - DEBUG - Coordinates extracted for heartbeat 7 of Layer 3.
+2024-10-14 16:15:56,070 - DEBUG - Coordinates extracted for heartbeat 7 of Layer 3.
+2024-10-14 16:15:56,070 - INFO - Starting interpolation with 42189 points.
+2024-10-14 16:15:56,070 - INFO - Interpolation successful.
+2024-10-14 16:15:56,071 - DEBUG - Coordinates interpolated for heartbeat 7 of Layer 3.
+2024-10-14 16:15:56,071 - DEBUG - Coordinates interpolated for heartbeat 7 of Layer 3.
+2024-10-14 16:15:56,071 - DEBUG - Coordinates extracted for heartbeat 8 of Layer 3.
+2024-10-14 16:15:56,071 - DEBUG - Coordinates extracted for heartbeat 8 of Layer 3.
+2024-10-14 16:15:56,071 - INFO - Starting interpolation with 41357 points.
+2024-10-14 16:15:56,072 - INFO - Interpolation successful.
+2024-10-14 16:15:56,072 - DEBUG - Coordinates interpolated for heartbeat 8 of Layer 3.
+2024-10-14 16:15:56,072 - DEBUG - Coordinates interpolated for heartbeat 8 of Layer 3.
+2024-10-14 16:15:56,072 - DEBUG - Average coordinates calculated for Layer 3.
+2024-10-14 16:15:56,072 - DEBUG - Average coordinates calculated for Layer 3.
+2024-10-14 16:15:56,072 - DEBUG - Data reshaped for LSTM prediction for Layer 3.
+2024-10-14 16:15:56,072 - DEBUG - Data reshaped for LSTM prediction for Layer 3.
+2024-10-14 16:15:56,114 - INFO - Predicted Class for Layer 3: Abnormal with probability 0.73
+2024-10-14 16:15:56,114 - INFO - Predicted Class for Layer 3: Abnormal with probability 0.73
+2024-10-14 16:15:56,115 - DEBUG - Information added to layers_info for Layer 3.
+2024-10-14 16:15:56,115 - DEBUG - Information added to layers_info for Layer 3.
+2024-10-14 16:15:56,115 - INFO - Generating the results PDF.
+2024-10-14 16:15:56,115 - INFO - Generating the results PDF.
+2024-10-14 16:15:56,115 - INFO - Generating PDF with analysis results.
+2024-10-14 16:15:56,115 - INFO - Generating PDF with analysis results.
+2024-10-14 16:15:56,117 - DEBUG - STREAM b'IHDR' 16 13
+2024-10-14 16:15:56,117 - DEBUG - STREAM b'tEXt' 41 57
+2024-10-14 16:15:56,117 - DEBUG - STREAM b'pHYs' 110 9
+2024-10-14 16:15:56,117 - DEBUG - STREAM b'IDAT' 131 32660
+2024-10-14 16:15:56,306 - DEBUG - ROC curve image added to the PDF.
+2024-10-14 16:15:56,306 - DEBUG - ROC curve image added to the PDF.
+2024-10-14 16:15:56,306 - DEBUG - Explanation for ROC curve added to the PDF.
+2024-10-14 16:15:56,306 - DEBUG - Explanation for ROC curve added to the PDF.
+2024-10-14 16:15:56,346 - DEBUG - Original ECG image added to the PDF.
+2024-10-14 16:15:56,346 - DEBUG - Original ECG image added to the PDF.
+2024-10-14 16:15:56,350 - DEBUG - Layer 1 image added to the PDF.
+2024-10-14 16:15:56,350 - DEBUG - Layer 1 image added to the PDF.
+2024-10-14 16:15:56,354 - DEBUG - Layer 2 image added to the PDF.
+2024-10-14 16:15:56,354 - DEBUG - Layer 2 image added to the PDF.
+2024-10-14 16:15:56,357 - DEBUG - Layer 3 image added to the PDF.
+2024-10-14 16:15:56,357 - DEBUG - Layer 3 image added to the PDF.
+2024-10-14 16:15:56,358 - INFO - PDF successfully generated with the analysis results.
+2024-10-14 16:15:56,358 - INFO - PDF successfully generated with the analysis results.
+2024-10-14 16:15:56,358 - INFO - Results PDF successfully generated.
+2024-10-14 16:15:56,358 - INFO - Results PDF successfully generated.
+2024-10-14 16:15:56,359 - INFO - Download button for PDF made available to the user.
+2024-10-14 16:15:56,359 - INFO - Download button for PDF made available to the user.
+2024-10-14 16:15:56,359 - INFO - User activated the download button for the log file.
+2024-10-14 16:15:56,359 - INFO - User activated the download button for the log file.
+to the PDF.
+2024-10-14 16:15:34,427 - DEBUG - ROC curve image added to the PDF.
+2024-10-14 16:15:34,427 - DEBUG - Explanation for ROC curve added to the PDF.
+2024-10-14 16:15:34,427 - DEBUG - Explanation for ROC curve added to the PDF.
+2024-10-14 16:15:34,467 - DEBUG - Original ECG image added to the PDF.
+2024-10-14 16:15:34,467 - DEBUG - Original ECG image added to the PDF.
+2024-10-14 16:15:34,471 - DEBUG - Layer 1 image added to the PDF.
+2024-10-14 16:15:34,471 - DEBUG - Layer 1 image added to the PDF.
+2024-10-14 16:15:34,474 - DEBUG - Layer 2 image added to the PDF.
+2024-10-14 16:15:34,474 - DEBUG - Layer 2 image added to the PDF.
+2024-10-14 16:15:34,478 - DEBUG - Layer 3 image added to the PDF.
+2024-10-14 16:15:34,478 - DEBUG - Layer 3 image added to the PDF.
+2024-10-14 16:15:34,479 - INFO - PDF successfully generated with the analysis results.
+2024-10-14 16:15:34,479 - INFO - PDF successfully generated with the analysis results.
+2024-10-14 16:15:34,479 - INFO - Results PDF successfully generated.
+2024-10-14 16:15:34,479 - INFO - Results PDF successfully generated.
+2024-10-14 16:15:34,480 - INFO - Download button for PDF made available to the user.
+2024-10-14 16:15:34,480 - INFO - Download button for PDF made available to the user.
+2024-10-14 16:15:34,480 - INFO - User activated the download button for the log file.
+2024-10-14 16:15:34,480 - INFO - User activated the download button for the log file.
+:23,408 - DEBUG - Coordinates extracted for heartbeat 5 of Layer 3.
+2024-10-14 16:14:23,408 - DEBUG - Coordinates extracted for heartbeat 5 of Layer 3.
+2024-10-14 16:14:23,408 - INFO - Starting interpolation with 36163 points.
+2024-10-14 16:14:23,409 - INFO - Interpolation successful.
+2024-10-14 16:14:23,409 - DEBUG - Coordinates interpolated for heartbeat 5 of Layer 3.
+2024-10-14 16:14:23,409 - DEBUG - Coordinates interpolated for heartbeat 5 of Layer 3.
+2024-10-14 16:14:23,409 - DEBUG - Coordinates extracted for heartbeat 6 of Layer 3.
+2024-10-14 16:14:23,409 - DEBUG - Coordinates extracted for heartbeat 6 of Layer 3.
+2024-10-14 16:14:23,409 - INFO - Starting interpolation with 36368 points.
+2024-10-14 16:14:23,410 - INFO - Interpolation successful.
+2024-10-14 16:14:23,410 - DEBUG - Coordinates interpolated for heartbeat 6 of Layer 3.
+2024-10-14 16:14:23,410 - DEBUG - Coordinates interpolated for heartbeat 6 of Layer 3.
+2024-10-14 16:14:23,410 - DEBUG - Coordinates extracted for heartbeat 7 of Layer 3.
+2024-10-14 16:14:23,410 - DEBUG - Coordinates extracted for heartbeat 7 of Layer 3.
+2024-10-14 16:14:23,410 - INFO - Starting interpolation with 36058 points.
+2024-10-14 16:14:23,411 - INFO - Interpolation successful.
+2024-10-14 16:14:23,411 - DEBUG - Coordinates interpolated for heartbeat 7 of Layer 3.
+2024-10-14 16:14:23,411 - DEBUG - Coordinates interpolated for heartbeat 7 of Layer 3.
+2024-10-14 16:14:23,411 - DEBUG - Coordinates extracted for heartbeat 8 of Layer 3.
+2024-10-14 16:14:23,411 - DEBUG - Coordinates extracted for heartbeat 8 of Layer 3.
+2024-10-14 16:14:23,411 - INFO - Starting interpolation with 36318 points.
+2024-10-14 16:14:23,412 - INFO - Interpolation successful.
+2024-10-14 16:14:23,412 - DEBUG - Coordinates interpolated for heartbeat 8 of Layer 3.
+2024-10-14 16:14:23,412 - DEBUG - Coordinates interpolated for heartbeat 8 of Layer 3.
+2024-10-14 16:14:23,412 - DEBUG - Coordinates extracted for heartbeat 9 of Layer 3.
+2024-10-14 16:14:23,412 - DEBUG - Coordinates extracted for heartbeat 9 of Layer 3.
+2024-10-14 16:14:23,412 - INFO - Starting interpolation with 36510 points.
+2024-10-14 16:14:23,412 - INFO - Interpolation successful.
+2024-10-14 16:14:23,413 - DEBUG - Coordinates interpolated for heartbeat 9 of Layer 3.
+2024-10-14 16:14:23,413 - DEBUG - Coordinates interpolated for heartbeat 9 of Layer 3.
+2024-10-14 16:14:23,413 - DEBUG - Average coordinates calculated for Layer 3.
+2024-10-14 16:14:23,413 - DEBUG - Average coordinates calculated for Layer 3.
+2024-10-14 16:14:23,413 - DEBUG - Data reshaped for LSTM prediction for Layer 3.
+2024-10-14 16:14:23,413 - DEBUG - Data reshaped for LSTM prediction for Layer 3.
+2024-10-14 16:14:23,457 - INFO - Predicted Class for Layer 3: Abnormal with probability 0.73
+2024-10-14 16:14:23,457 - INFO - Predicted Class for Layer 3: Abnormal with probability 0.73
+2024-10-14 16:14:23,457 - DEBUG - Information added to layers_info for Layer 3.
+2024-10-14 16:14:23,457 - DEBUG - Information added to layers_info for Layer 3.
+2024-10-14 16:14:23,457 - INFO - Generating the results PDF.
+2024-10-14 16:14:23,457 - INFO - Generating the results PDF.
+2024-10-14 16:14:23,458 - INFO - Generating PDF with analysis results.
+2024-10-14 16:14:23,458 - INFO - Generating PDF with analysis results.
+2024-10-14 16:14:23,458 - DEBUG - STREAM b'IHDR' 16 13
+2024-10-14 16:14:23,458 - DEBUG - STREAM b'tEXt' 41 57
+2024-10-14 16:14:23,458 - DEBUG - STREAM b'pHYs' 110 9
+2024-10-14 16:14:23,458 - DEBUG - STREAM b'IDAT' 131 32660
+2024-10-14 16:14:23,628 - DEBUG - ROC curve image added to the PDF.
+2024-10-14 16:14:23,628 - DEBUG - ROC curve image added to the PDF.
+2024-10-14 16:14:23,628 - DEBUG - Explanation for ROC curve added to the PDF.
+2024-10-14 16:14:23,628 - DEBUG - Explanation for ROC curve added to the PDF.
+2024-10-14 16:14:23,668 - DEBUG - Original ECG image added to the PDF.
+2024-10-14 16:14:23,668 - DEBUG - Original ECG image added to the PDF.
+2024-10-14 16:14:23,672 - DEBUG - Layer 1 image added to the PDF.
+2024-10-14 16:14:23,672 - DEBUG - Layer 1 image added to the PDF.
+2024-10-14 16:14:23,676 - DEBUG - Layer 2 image added to the PDF.
+2024-10-14 16:14:23,676 - DEBUG - Layer 2 image added to the PDF.
+2024-10-14 16:14:23,679 - DEBUG - Layer 3 image added to the PDF.
+2024-10-14 16:14:23,679 - DEBUG - Layer 3 image added to the PDF.
+2024-10-14 16:14:23,680 - INFO - PDF successfully generated with the analysis results.
+2024-10-14 16:14:23,680 - INFO - PDF successfully generated with the analysis results.
+2024-10-14 16:14:23,680 - INFO - Results PDF successfully generated.
+2024-10-14 16:14:23,680 - INFO - Results PDF successfully generated.
+2024-10-14 16:14:23,681 - INFO - Download button for PDF made available to the user.
+2024-10-14 16:14:23,681 - INFO - Download button for PDF made available to the user.
+2024-10-14 16:14:23,681 - INFO - User activated the download button for the log file.
+2024-10-14 16:14:23,681 - INFO - User activated the download button for the log file.
