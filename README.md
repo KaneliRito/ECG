@@ -95,6 +95,27 @@ Het LSTM-model bestaat uit:
 
 Het uiteindelijke model heeft een gemiddelde AUROC van ongeveer 0.78 en een F1-score van 0.71, wat aangeeft dat het model effectief is in het onderscheiden van normale en abnormale ECG-gegevens.
 
+Fold 1:	                        Fold 4:
+F1 Score: 0.7407407407407407	F1 Score: 0.7411764705882353
+Precision: 0.8955223880597015	Fold 4 - Precision: 0.84
+Recall: 0.631578947368421	    Recall: 0.6631578947368421
+AUROC: 0.8510964912280703	    AUROC: 0.8224780701754387
+AUPRC: 0.8864009924159035	    AUPRC: 0.8657702110900989
+Fold 2:	Fold 5:
+F1 Score: 0.75	                F1 Score: 0.6666666666666666
+Precision: 0.863013698630137	Precision: 0.828125
+Recall: 0.6631578947368421	    Recall: 0.5578947368421052
+AUROC: 0.8396929824561404	    AUROC: 0.7721883656509695
+AUPRC: 0.8627379863634974	    AUPRC: 0.8158282779556207
+Fold 3:	                        Final model:
+F1 Score: 0.7407407407407407	Accuracy: 0.74737948179245
+Precision: 0.8955223880597015	F1 Score: 0.7085852478839177
+Recall: 0.631578947368421	    Precision: 0.8347578347578347
+AUROC: 0.8510964912280703	    Recall: 0.615546218487395
+AUPRC: 0.8864009924159035	    AUROC: 0.7886457930452516
+	                            AUPRC: 0.8385686271442826
+
+
 ## Webapplicatie
 
 De webapplicatie, gebouwd met Streamlit, biedt een gebruiksvriendelijke interface voor het uploaden en analyseren van ECG-PDF's. Belangrijke functionaliteiten zijn onder andere:
