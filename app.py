@@ -1,15 +1,20 @@
-# app.py (Web Application)
+# app.py (webapp)
 
 import streamlit as st
-import os
-import tempfile
+import fitz  # PyMuPDF
 from PIL import Image
 import numpy as np
+import pandas as pd
+import tensorflow as tf
+from tensorflow.keras.models import load_model
+import cv2
+import os
+import tempfile
+from fpdf import FPDF  # For PDF generation
+from io import BytesIO, StringIO  # For BytesIO and StringIO
 import logging
-from io import BytesIO, StringIO
-from fpdf import FPDF
-import fitz  # PyMuPDF
-
+from logging import StreamHandler
+from tqdm import tqdm
 from ecg_processing import (
     extract_ecg_image_from_pdf,
     preprocess_image,
@@ -17,40 +22,12 @@ from ecg_processing import (
     detect_r_peaks,
     split_image_by_peaks,
     extract_coordinates,
-    determine_label,
-    
+    determine_label
 )
-
-def split_image_into_layers(img, num_layers=3):
-    """
-    Splits the image horizontally into a given number of layers.
-
-    Parameters:
-    - img: PIL Image
-    - num_layers: Number of layers to split into
-
-    Returns:
-    - List of split layers as PIL Images
-    """
-    logger.info(f"Splitting the image into {num_layers} layers.")
-    width, height = img.size
-    layer_height = height // num_layers
-    layers = []
-    for i in range(num_layers):
-        top = i * layer_height
-        bottom = (i + 1) * layer_height if i < num_layers - 1 else height
-        layer = img.crop((0, top, width, bottom))
-        layers.append(layer)
-        logger.debug(f"Layer {i+1} cropped from pixels {top} to {bottom}.")
-    logger.info(f"Image successfully split into {num_layers} layers.")
-    return layers
-
 
 from data_preparation import (
     interpolate_coordinates_fixed as interpolate_coordinates
 )
-
-from tensorflow.keras.models import load_model
 
 # Initialize per-session logging
 if 'log_buffer' not in st.session_state:
@@ -58,38 +35,29 @@ if 'log_buffer' not in st.session_state:
 
 # Set up logger
 logger = logging.getLogger('streamlit_logger')
-logger.setLevel(logging.DEBUG)  # Set to DEBUG for detailed logs
-
+logger.setLevel(logging.INFO)
 # Remove all existing handlers
 for handler in logger.handlers[:]:
     logger.removeHandler(handler)
-
 # Create a StreamHandler to write to the log buffer
-stream_handler = logging.StreamHandler(st.session_state['log_buffer'])
-stream_handler.setLevel(logging.DEBUG)  # Capture all levels
+stream_handler = StreamHandler(st.session_state['log_buffer'])
+stream_handler.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 stream_handler.setFormatter(formatter)
 logger.addHandler(stream_handler)
 
-# Also add to root logger
+# Add the stream handler to the root logger to capture logs from other modules
 root_logger = logging.getLogger()
-root_logger.setLevel(logging.DEBUG)
+root_logger.setLevel(logging.INFO)
 for handler in root_logger.handlers[:]:
     root_logger.removeHandler(handler)
 root_logger.addHandler(stream_handler)
 
-logger.info("Start of the ECG processing and model classification via Streamlit.")
-
-# Function to ensure necessary directories exist
-def ensure_directories(*dirs):
-    for directory in dirs:
-        os.makedirs(directory, exist_ok=True)
-        logger.debug(f"Verified/created directory: {directory}")
+logger.info("Start of the ECG processing and model training script via Streamlit.")
 
 # Set seed for reproducibility
 def set_seed(seed=42):
     np.random.seed(seed)
-    import tensorflow as tf
     tf.random.set_seed(seed)
     import random
     random.seed(seed)
@@ -102,29 +70,46 @@ set_seed()
 # Load the trained model with caching to optimize load times
 @st.cache_resource
 def load_trained_model(model_path):
-    logger.info(f"Loading model from path: {model_path}")
-    if not os.path.exists(model_path):
-        logger.error(f"Model file not found at path: {model_path}")
-        raise FileNotFoundError(f"Model file not found at path: {model_path}")
+    logger.info(f"Starting to load the model from path: {model_path}")
     model = load_model(model_path)
-    logger.info("Model successfully loaded.")
+    logger.info("final_model.keras successfully loaded.")
     return model
 
 # Provide the path to the model
-model_path = os.path.join('ecg', 'final_model.keras')
+model_path = 'ecg\\final_model.keras'
 
 # Load the model
-try:
-    model = load_trained_model(model_path)
-except Exception as e:
-    logger.exception(f"Failed to load the model: {e}")
-    st.error(f"Failed to load the model: {e}")
-    st.stop()
+model = load_trained_model(model_path)
 
-# Function to generate PDF with predictions
+# Function to split the image into layers (since not available in other modules)
+def split_into_layers(img, num_layers=3):
+    """
+    Splits the image horizontally into a given number of layers.
+
+    Parameters:
+    - img: PIL Image
+    - num_layers: Number of layers to split into
+
+    Returns:
+    - List of split layers as PIL Images
+    """
+    logger.info(f"Starting to split the image into {num_layers} layers.")
+    width, height = img.size
+    layer_height = height // num_layers
+    layers = []
+    for i in range(num_layers):
+        top = i * layer_height
+        bottom = (i + 1) * layer_height if i < num_layers - 1 else height
+        layer = img.crop((0, top, width, bottom))
+        layers.append(layer)
+        logger.debug(f"Layer {i+1} cropped from pixels {top} to {bottom}.")
+    logger.info(f"Image successfully split into {num_layers} layers.")
+    return layers
+
+# Function to generate PDF with predictions (remains in app.py)
 def generate_pdf(layers_info, original_image):
     """Generate a PDF with layers, predictions, and percentages."""
-    logger.info("Generating PDF with analysis results.")
+    logger.info("Starting to generate the PDF with analysis results.")
     pdf = FPDF()
     pdf.set_auto_page_break(auto=True, margin=15)
     
@@ -134,8 +119,10 @@ def generate_pdf(layers_info, original_image):
     pdf.cell(0, 10, "ECG Analysis Results", ln=True, align='C')
     pdf.ln(10)
     
+    
+    
     # Add ROC Curve Image with Explanation
-    roc_image_path = os.path.join('ECG', 'roc_curves', 'roc_foldfinal.png')
+    roc_image_path = 'ECG\\roc_curves\\roc_foldfinal.png'
     if os.path.exists(roc_image_path):
         pdf.set_font("Arial", '', 12)
         pdf.cell(0, 10, "Receiver Operating Characteristic (ROC) Curve:", ln=True)
@@ -155,10 +142,10 @@ def generate_pdf(layers_info, original_image):
         logger.warning(f"ROC curve image not found at path: {roc_image_path}")
         pdf.set_font("Arial", 'I', 12)
         pdf.cell(0, 10, "ROC curve image not available.", ln=True)
-    
     # Add the original ECG image
     pdf.set_font("Arial", '', 12)
     pdf.cell(0, 14, "Original ECG Image:", ln=True)
+    # Save the original image temporarily
     with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmp_img:
         original_image.save(tmp_img.name, format='PNG')
         pdf.image(tmp_img.name, w=180)  # Adjust width if necessary
@@ -218,7 +205,7 @@ st.title("ECG PDF Processor and Classification")
 st.subheader("Disclaimer")
 st.write("""
 This application processes medical data in the form of ECG PDF files. By clicking **"I Agree"**, you consent to uploading your medical data. All data will be deleted after processing. No liability is accepted for any consequences of using this application, as it is intended for demonstration purposes and is not a substitute for professional medical advice. Please note that the AI algorithms used in this application may contain biases, making the results not entirely accurate.""")
-
+    
 accept = st.checkbox("I Agree")
 
 if accept:
@@ -229,17 +216,13 @@ if accept:
     
     if uploaded_file is not None:
         logger.info(f"User uploaded a file: {uploaded_file.name}")
-        # Ensure necessary directories exist
-        temp_dir = os.path.join('ECG', 'temp')
-        roc_dir = os.path.join('ECG', 'roc_curves')
-        ensure_directories(temp_dir, roc_dir)
-        
         with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_file:
             tmp_file.write(uploaded_file.read())
             tmp_pdf_path = tmp_file.name
             logger.debug(f"Uploaded file saved as temporary file: {tmp_pdf_path}")
         
         # Define the area where the ECG image is located in the PDF
+        # Adjust these values based on your PDFs
         clip_rect = fitz.Rect(20, 200, 850, 525)  # [left, top, right, bottom]
         logger.debug(f"Using clip_rect for ECG extraction: {clip_rect}")
     
@@ -249,38 +232,30 @@ if accept:
                 page = pdf_document.load_page(0)
                 page_text = page.get_text()
                 label = determine_label(page_text)
-                logger.info(f"Determined Label of the ECG: {label}")
+                logger.info(f"Predicted Label of the ECG: {label}")
         except Exception as e:
-            logger.exception(f"Error reading PDF text: {e}")
+            logger.error(f"Error reading PDF text: {e}")
             label = 'unknown'
             st.error("Error reading PDF text.")
     
         # Extract ECG image
         try:
             logger.info("Starting extraction of the ECG image from the PDF.")
-            ecg_temp_path = os.path.join(temp_dir, 'temp_ecg.png')
-            extract_ecg_image_from_pdf(tmp_pdf_path, ecg_temp_path, clip_rect)
-            if ecg_temp_path is None:
-                raise ValueError("ECG image extraction returned None.")
+            extract_ecg_image_from_pdf(tmp_pdf_path, "ECG\\temp\\temp_ecg.png", clip_rect)
             logger.info("ECG image successfully extracted from the PDF.")
         except Exception as e:
-            logger.exception(f"Error extracting ECG image: {e}")
+            logger.error(f"Error extracting ECG image: {e}")
             st.error("Error extracting ECG image.")
-            ecg_temp_path = None
         
         # Load the image from the saved path
-        img = None
-        if ecg_temp_path and os.path.exists(ecg_temp_path):
-            try:
-                img = Image.open(ecg_temp_path)
-                logger.info("ECG image successfully loaded.")
-            except Exception as e:
-                logger.exception(f"Error loading ECG image: {e}")
-                st.error("Error loading ECG image.")
-        else:
-            logger.error("ECG image path does not exist.")
-            st.error("ECG image could not be found.")
-    
+        try:
+            img = Image.open("ECG\\temp\\temp_ecg.png")
+            logger.info("ECG image successfully loaded.")
+        except Exception as e:
+            logger.error(f"Error loading ECG image: {e}")
+            st.error("Error loading ECG image.")
+            img = None
+
         if img is not None:
             st.image(img, caption='Extracted ECG Image', use_column_width=True)
             logger.debug("Extracted ECG image displayed to the user.")
@@ -289,28 +264,20 @@ if accept:
             try:
                 logger.info("Starting preprocessing of the ECG image.")
                 preprocessed_img = preprocess_image(img)
-                if preprocessed_img is None:
-                    raise ValueError("Preprocessing returned None.")
                 logger.info("Preprocessing of the ECG image completed.")
             except Exception as e:
-                logger.exception(f"Error preprocessing ECG image: {e}")
+                logger.error(f"Error preprocessing ECG image: {e}")
                 st.error("Error preprocessing ECG image.")
                 preprocessed_img = None
-    
+
             if preprocessed_img is not None:
                 st.image(preprocessed_img, caption='Preprocessed ECG Image (Grayscale & Binarization)', use_column_width=True)
                 logger.debug("Preprocessed ECG image displayed to the user.")
     
                 # Split the image into layers (fixed at 3 layers)
                 num_layers = 3  # Number of layers fixed at 3
-                try:
-                    layers = split_image_into_layers(preprocessed_img, num_layers=num_layers)
-                    logger.info(f"Image successfully split into {num_layers} layers.")
-                except Exception as e:
-                    logger.exception(f"Error splitting image into layers: {e}")
-                    st.error("Error splitting image into layers.")
-                    layers = []
-    
+                layers = split_into_layers(preprocessed_img, num_layers=num_layers)
+                logger.info(f"Number of layers: {num_layers}")
                 st.write(f"Number of layers: {num_layers}")
     
                 # Display the layers with predictions
@@ -327,7 +294,7 @@ if accept:
                         signal = extract_ecg_signal(layer)
                         logger.debug(f"ECG signal for Layer {layer_idx} successfully extracted.")
                     except Exception as e:
-                        logger.exception(f"Error extracting ECG signal for Layer {layer_idx}: {e}")
+                        logger.error(f"Error extracting ECG signal for Layer {layer_idx}: {e}")
                         st.error(f"Error extracting ECG signal for Layer {layer_idx}.")
                         continue
     
@@ -335,10 +302,10 @@ if accept:
                     height = np.max(signal) * 0.5
                     distance = 150  # Adjust based on your ECG data
                     try:
-                        peaks, properties = detect_r_peaks(signal, height=height, distance=distance)
+                        peaks = detect_r_peaks(signal, height=height, distance=distance)
                         logger.info(f"Number of detected R-peaks for Layer {layer_idx}: {len(peaks)}")
                     except Exception as e:
-                        logger.exception(f"Error detecting R-peaks for Layer {layer_idx}: {e}")
+                        logger.error(f"Error detecting R-peaks for Layer {layer_idx}: {e}")
                         st.error(f"Error detecting R-peaks for Layer {layer_idx}.")
                         peaks = []
     
@@ -346,19 +313,10 @@ if accept:
     
                     # Split the image into heartbeats
                     try:
-                        if len(peaks) < 2:
-                            raise ValueError("Insufficient number of R-peaks to split heartbeats.")
-                        # Dynamically adjust window size based on average distance between peaks
-                        if len(peaks) >= 2:
-                            distances = np.diff(peaks)
-                            avg_distance = np.mean(distances)
-                            window = int(avg_distance * 0.5)  # Adjust multiplier as needed
-                        else:
-                            window = 50  # Fallback window size
-                        heartbeats = split_image_by_peaks(layer, peaks, window=window)
+                        heartbeats = split_image_by_peaks(layer, peaks, window=100)
                         logger.info(f"Number of heartbeat segments for Layer {layer_idx}: {len(heartbeats)}")
                     except Exception as e:
-                        logger.exception(f"Error splitting heartbeat segments for Layer {layer_idx}: {e}")
+                        logger.error(f"Error splitting heartbeat segments for Layer {layer_idx}: {e}")
                         st.error(f"Error splitting heartbeat segments for Layer {layer_idx}.")
                         heartbeats = []
     
@@ -371,7 +329,7 @@ if accept:
                             x_coords, y_coords = extract_coordinates(heartbeat)
                             logger.debug(f"Coordinates extracted for heartbeat {hb_idx} of Layer {layer_idx}.")
                         except Exception as e:
-                            logger.exception(f"Error extracting coordinates for heartbeat {hb_idx} of Layer {layer_idx}: {e}")
+                            logger.error(f"Error extracting coordinates for heartbeat {hb_idx} of Layer {layer_idx}: {e}")
                             st.error(f"Error extracting coordinates for heartbeat {hb_idx} of Layer {layer_idx}.")
                             continue
                         
@@ -388,7 +346,7 @@ if accept:
                             logger.debug(f"Coordinates interpolated for heartbeat {hb_idx} of Layer {layer_idx}.")
                             all_coordinates.append(coordinates)
                         except Exception as e:
-                            logger.exception(f"Error interpolating coordinates for heartbeat {hb_idx} of Layer {layer_idx}: {e}")
+                            logger.error(f"Error interpolating coordinates for heartbeat {hb_idx} of Layer {layer_idx}: {e}")
                             st.error(f"Error interpolating coordinates for heartbeat {hb_idx} of Layer {layer_idx}.")
                             continue
     
@@ -402,7 +360,7 @@ if accept:
                         average_coordinates = np.mean(all_coordinates, axis=0).reshape(1, -1)
                         logger.debug(f"Average coordinates calculated for Layer {layer_idx}.")
                     except Exception as e:
-                        logger.exception(f"Error calculating average coordinates for Layer {layer_idx}: {e}")
+                        logger.error(f"Error calculating average coordinates for Layer {layer_idx}: {e}")
                         st.error(f"Error calculating average coordinates for Layer {layer_idx}.")
                         continue
     
@@ -411,7 +369,7 @@ if accept:
                         X_pred = average_coordinates.reshape((1, 100, 2))
                         logger.debug(f"Data reshaped for LSTM prediction for Layer {layer_idx}.")
                     except Exception as e:
-                        logger.exception(f"Error reshaping data for Layer {layer_idx}: {e}")
+                        logger.error(f"Error reshaping data for Layer {layer_idx}: {e}")
                         st.error(f"Error reshaping data for Layer {layer_idx}.")
                         continue
     
@@ -422,7 +380,7 @@ if accept:
                         prediction_prob = prediction_prob if prediction_prob > 0.5 else 1 - prediction_prob
                         logger.info(f"Predicted Class for Layer {layer_idx}: {predicted_class} with probability {prediction_prob:.2f}")
                     except Exception as e:
-                        logger.exception(f"Error predicting class for Layer {layer_idx}: {e}")
+                        logger.error(f"Error predicting class for Layer {layer_idx}: {e}")
                         st.error(f"Error predicting class for Layer {layer_idx}.")
                         predicted_class = 'Unknown'
                         prediction_prob = 0.0
@@ -442,7 +400,7 @@ if accept:
                 # Generate PDF if layers are processed
                 if layers_info:
                     try:
-                        logger.info("Generating the results PDF.")
+                        logger.info("Starting to generate the results PDF.")
                         pdf_buffer = generate_pdf(layers_info, img)
                         logger.info("Results PDF successfully generated.")
                         st.download_button(
@@ -453,7 +411,7 @@ if accept:
                         )
                         logger.info("Download button for PDF made available to the user.")
                     except Exception as e:
-                        logger.exception(f"Error generating PDF: {e}")
+                        logger.error(f"Error generating PDF: {e}")
                         st.error("Error generating PDF.")
                 else:
                     st.write("No layers processed. PDF cannot be generated.")
@@ -465,22 +423,18 @@ if accept:
             else:
                 st.error("Error processing the ECG image.")
                 logger.error("Error processing the ECG image.")
-        
-        # Clean up temporary files after processing
+    
+        # Optionally: Delete the temporary files after processing
         try:
-            if os.path.exists(tmp_pdf_path):
+            if uploaded_file is not None and os.path.exists(tmp_pdf_path):
                 os.remove(tmp_pdf_path)
                 logger.info("Temporary PDF file successfully removed.")
-            if ecg_temp_path and os.path.exists(ecg_temp_path):
-                os.remove(ecg_temp_path)
+            if os.path.exists("ECG\\temp\\temp_ecg.png"):
+                os.remove("ECG\\temp\\temp_ecg.png")
                 logger.info("Temporary ECG image successfully removed.")
         except PermissionError:
-            logger.warning("Cannot remove the temporary file. It might still be in use.")
-            st.warning("Cannot remove the temporary file. Please ensure it's not open elsewhere.")
-        except Exception as e:
-            logger.exception(f"Unexpected error when removing temporary files: {e}")
-            st.warning("Unexpected error occurred while removing temporary files.")
+            logger.warning("Cannot remove the temporary file. Check if it's still in use.")
+            st.warning("Cannot remove the temporary file. Check if it's still in use. If not, contact the administrator or email to: s1141810@student.hsleiden.nl")
     else:
         st.warning("You must agree to the disclaimer before uploading a file.")
         logger.info("User did not agree to the disclaimer.")
-
