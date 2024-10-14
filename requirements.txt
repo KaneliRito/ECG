@@ -3,10 +3,11 @@ scikit-learn
 tensorflow
 tqdm
 matplotlib
-opencv-python
+opencv-python-headless
 pillow
 PyMuPDF
 pandas
 scipy
 streamlit
 fpdf
+opencv-python==4.10.0.84
