@@ -14,7 +14,7 @@ def main():
     logger.info("Start of the ECG processing and model training script.")
 
     # Process PDFs and extract ECG data
-    csv_output = 'ecg_data.csv'
+    csv_output = 'ECG\\ecg_data.csv'
     
     process_pdfs(output_csv=csv_output)
 
