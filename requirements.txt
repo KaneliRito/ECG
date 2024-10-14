@@ -10,4 +10,3 @@ pandas
 scipy
 streamlit
 fpdf
-opencv-python
