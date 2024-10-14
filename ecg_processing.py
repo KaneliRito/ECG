@@ -155,6 +155,7 @@ def split_image_by_peaks(img, peaks, window=50):
     return sections
 
 
+
 def extract_coordinates(img):
     """
     Extracts the X and Y coordinates of white pixels in a binarized ECG image.
